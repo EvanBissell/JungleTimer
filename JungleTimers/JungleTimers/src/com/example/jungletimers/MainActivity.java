@@ -3,25 +3,31 @@ package com.example.jungletimers;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.os.CountDownTimer;
 
 public class MainActivity extends Activity
 {
 //JungleTimer jtimer = new JungleTimer();
 	TextView GR, GB, LR, LB, DR, BA;
+	ImageButton GRback, GBback, LRback, LBback, DRback, BAback; //Backgrounds
+	int normalColor = Color.WHITE; //Normal background color to reset to
 	Timer[] timer = new Timer[6];
-	Thread thread;
 	boolean reset[] = {true, true, true, true, true, true};
 	boolean running[] = {false, false, false, false, false, false};
-	
 	private int[] TimeLeft = new int[6];
-	private String[] DisplayString = new String[6];
+	
+	Uri notification;
+	Ringtone ringtone;
 	
 	
 
@@ -37,7 +43,15 @@ public class MainActivity extends Activity
 		DR = (TextView) findViewById(R.id.textView5);
 		BA = (TextView) findViewById(R.id.textView6);
 		
+		GRback = (ImageButton) findViewById(R.id.imageButton1);
+		LRback = (ImageButton) findViewById(R.id.imageButton2);
+		GBback = (ImageButton) findViewById(R.id.ImageButton3);
+		LBback = (ImageButton) findViewById(R.id.ImageButton4);
+		DRback = (ImageButton) findViewById(R.id.ImageButton5);
+		BAback = (ImageButton) findViewById(R.id.ImageButton6);
 		
+		notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+		ringtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
 	}
 
 	@Override
@@ -60,8 +74,14 @@ public class MainActivity extends Activity
 					running[0] = false;
 					timer[0].cancel();
 					timer[0].purge();
-				}
-				else if(TimeLeft[0]>0){
+					GRback.setBackgroundColor(normalColor);
+				}else if(TimeLeft[0]>0){
+					if(TimeLeft[0]==30000){
+						ringtone.play();
+						GRback.setBackgroundColor(Color.YELLOW);
+					} else if(TimeLeft[0]==10000){
+						GRback.setBackgroundColor(Color.RED);
+					}
 					GR.setText("" + TimeLeft[0]/60000 + ":" + String.format("%02d", (TimeLeft[0]/1000)%60));
 					TimeLeft[0]-= 1000;
 				}
@@ -77,8 +97,15 @@ public class MainActivity extends Activity
 					running[1] = false;
 					timer[1].cancel();
 					timer[1].purge();
+					LRback.setBackgroundColor(normalColor);
 				}
 				else if(TimeLeft[1]>0){
+					if(TimeLeft[1]==30000){
+						ringtone.play();
+						LRback.setBackgroundColor(Color.YELLOW);
+					} else if(TimeLeft[1]==10000){
+						LRback.setBackgroundColor(Color.RED);
+					}
 					LR.setText("" + TimeLeft[1]/60000 + ":" + String.format("%02d", (TimeLeft[1]/1000)%60));
 					TimeLeft[1]-= 1000;
 				}
@@ -94,8 +121,15 @@ public class MainActivity extends Activity
 					running[2] = false;
 					timer[2].cancel();
 					timer[2].purge();
+					GBback.setBackgroundColor(normalColor);
 				}
 				else if(TimeLeft[2]>0){
+					if(TimeLeft[2]==30000){
+						ringtone.play();
+						GBback.setBackgroundColor(Color.YELLOW);
+					} else if(TimeLeft[2]==10000){
+						GBback.setBackgroundColor(Color.RED);
+					}
 					GB.setText("" + TimeLeft[2]/60000 + ":" + String.format("%02d", (TimeLeft[2]/1000)%60));
 					TimeLeft[2]-= 1000;
 				}
@@ -111,8 +145,15 @@ public class MainActivity extends Activity
 					running[3] = false;
 					timer[3].cancel();
 					timer[3].purge();
+					LBback.setBackgroundColor(normalColor);
 				}
 				else if(TimeLeft[3]>0){
+					if(TimeLeft[3]==30000){
+						ringtone.play();
+						LBback.setBackgroundColor(Color.YELLOW);
+					} else if(TimeLeft[3]==10000){
+						LBback.setBackgroundColor(Color.RED);
+					}
 					LB.setText("" + TimeLeft[3]/60000 + ":" + String.format("%02d", (TimeLeft[3]/1000)%60));
 					TimeLeft[3]-= 1000;
 				}
@@ -128,8 +169,15 @@ public class MainActivity extends Activity
 					running[4] = false;
 					timer[4].cancel();
 					timer[4].purge();
+					DRback.setBackgroundColor(normalColor);
 				}
 				else if(TimeLeft[4]>0){
+					if(TimeLeft[4]==30000){
+						ringtone.play();
+						DRback.setBackgroundColor(Color.YELLOW);
+					} else if(TimeLeft[4]==10000){
+						DRback.setBackgroundColor(Color.RED);
+					}
 					DR.setText("" + TimeLeft[4]/60000 + ":" + String.format("%02d", (TimeLeft[4]/1000)%60));
 					TimeLeft[4]-= 1000;
 				}
@@ -145,8 +193,17 @@ public class MainActivity extends Activity
 					running[5] = false;
 					timer[5].cancel();
 					timer[5].purge();
+					BAback.setBackgroundColor(normalColor);
 				}
 				else if(TimeLeft[5]>0){
+					if(TimeLeft[5]==60000){
+						BAback.setBackgroundColor(Color.LTGRAY);
+					}else if(TimeLeft[5]==30000){
+						ringtone.play();
+						BAback.setBackgroundColor(Color.YELLOW);
+					} else if(TimeLeft[5]==10000){
+						BAback.setBackgroundColor(Color.RED);
+					}
 					BA.setText("" + TimeLeft[5]/60000 + ":" + String.format("%02d", (TimeLeft[5]/1000)%60));
 					TimeLeft[5]-= 1000;
 				}
@@ -172,6 +229,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[0].cancel();
 			timer[0].purge();
+			GRback.setBackgroundColor(normalColor);
 			GR.setText("Canceled");
 			running[0] = false;
 		}		
@@ -191,6 +249,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[1].cancel();
 			timer[1].purge();
+			LR.setBackgroundColor(normalColor);
 			LR.setText("Canceled");
 			running[1] = false;
 		}
@@ -210,6 +269,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[2].cancel();
 			timer[2].purge();
+			GB.setBackgroundColor(normalColor);
 			GB.setText("Canceled");
 			running[2] = false;
 		}		
@@ -228,6 +288,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[3].cancel();
 			timer[3].purge();
+			LB.setBackgroundColor(normalColor);
 			LB.setText("Canceled");
 			running[3] = false;
 		}
@@ -247,6 +308,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[4].cancel();
 			timer[4].purge();
+			DR.setBackgroundColor(normalColor);
 			DR.setText("Canceled");
 			running[4] = false;
 		}
@@ -266,6 +328,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[5].cancel();
 			timer[5].purge();
+			BA.setBackgroundColor(normalColor);
 			BA.setText("Canceled");
 			running[5] = false;
 		}		
