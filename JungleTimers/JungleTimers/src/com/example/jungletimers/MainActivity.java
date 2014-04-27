@@ -49,7 +49,9 @@ public class MainActivity extends Activity
 		return true;
 	}
 	
+	//
 	//All the timer methods
+	//
 	private void TimerMethod0(){
 		runOnUiThread(new Runnable(){
 			public void run(){
@@ -60,7 +62,7 @@ public class MainActivity extends Activity
 					timer[0].purge();
 				}
 				else if(TimeLeft[0]>0){
-					GR.setText("" + TimeLeft[0]/1000);
+					GR.setText("" + TimeLeft[0]/60000 + ":" + String.format("%02d", (TimeLeft[0]/1000)%60));
 					TimeLeft[0]-= 1000;
 				}
 				
@@ -77,7 +79,7 @@ public class MainActivity extends Activity
 					timer[1].purge();
 				}
 				else if(TimeLeft[1]>0){
-					LR.setText("" + TimeLeft[1]/1000);
+					LR.setText("" + TimeLeft[1]/60000 + ":" + String.format("%02d", (TimeLeft[1]/1000)%60));
 					TimeLeft[1]-= 1000;
 				}
 				
@@ -94,7 +96,7 @@ public class MainActivity extends Activity
 					timer[2].purge();
 				}
 				else if(TimeLeft[2]>0){
-					GB.setText("" + TimeLeft[2]/1000);
+					GB.setText("" + TimeLeft[2]/60000 + ":" + String.format("%02d", (TimeLeft[2]/1000)%60));
 					TimeLeft[2]-= 1000;
 				}
 				
@@ -111,7 +113,7 @@ public class MainActivity extends Activity
 					timer[3].purge();
 				}
 				else if(TimeLeft[3]>0){
-					LB.setText("" + TimeLeft[3]/1000);
+					LB.setText("" + TimeLeft[3]/60000 + ":" + String.format("%02d", (TimeLeft[3]/1000)%60));
 					TimeLeft[3]-= 1000;
 				}
 				
@@ -128,7 +130,7 @@ public class MainActivity extends Activity
 					timer[4].purge();
 				}
 				else if(TimeLeft[4]>0){
-					DR.setText("" + TimeLeft[4]/1000);
+					DR.setText("" + TimeLeft[4]/60000 + ":" + String.format("%02d", (TimeLeft[4]/1000)%60));
 					TimeLeft[4]-= 1000;
 				}
 				
@@ -145,7 +147,7 @@ public class MainActivity extends Activity
 					timer[5].purge();
 				}
 				else if(TimeLeft[5]>0){
-					BA.setText("" + TimeLeft[5]/1000);
+					BA.setText("" + TimeLeft[5]/60000 + ":" + String.format("%02d", (TimeLeft[5]/1000)%60));
 					TimeLeft[5]-= 1000;
 				}
 				
@@ -153,8 +155,11 @@ public class MainActivity extends Activity
 		});
 	}
 	
+	//
+	//Called when each of these buttons is clicked
+	//
 	public void RedGolem(View view){
-		TimeLeft[0] = 10000;
+		TimeLeft[0] = 300000;
 		if(!running[0]){
 			running[0] = true;
 			timer[0] = new Timer();
@@ -173,7 +178,7 @@ public class MainActivity extends Activity
 	}
 
 	public void RedLizard(View view){
-		TimeLeft[1] = 10000;
+		TimeLeft[1] = 300000;
 		if(!running[1]){
 			running[1] = true;
 			timer[1] = new Timer();
@@ -192,7 +197,7 @@ public class MainActivity extends Activity
 	}
 	
 	public void BlueGolem(View view){
-		TimeLeft[2] = 10000;
+		TimeLeft[2] = 300000;
 		if(!running[2]){
 			running[2] = true;
 			timer[2] = new Timer();
@@ -210,7 +215,7 @@ public class MainActivity extends Activity
 		}		
 	}
 	public void BlueLizard(View view){
-		TimeLeft[3] = 10000;
+		TimeLeft[3] = 300000;
 		if(!running[3]){
 			running[3] = true;
 			timer[3] = new Timer();
@@ -229,7 +234,7 @@ public class MainActivity extends Activity
 		
 	}
 	public void Dragon(View view){
-		TimeLeft[4] = 10000;
+		TimeLeft[4] = 360000;
 		if(!running[4]){
 			running[4] = true;
 			timer[4] = new Timer();
@@ -248,7 +253,7 @@ public class MainActivity extends Activity
 		
 	}
 	public void Baron(View view){
-		TimeLeft[5] = 10000;
+		TimeLeft[5] = 420000;
 		if(!running[5]){
 			running[5] = true;
 			timer[5] = new Timer();
