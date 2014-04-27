@@ -249,7 +249,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[1].cancel();
 			timer[1].purge();
-			LR.setBackgroundColor(normalColor);
+			LRback.setBackgroundColor(normalColor);
 			LR.setText("Canceled");
 			running[1] = false;
 		}
@@ -269,7 +269,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[2].cancel();
 			timer[2].purge();
-			GB.setBackgroundColor(normalColor);
+			GBback.setBackgroundColor(normalColor);
 			GB.setText("Canceled");
 			running[2] = false;
 		}		
@@ -288,7 +288,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[3].cancel();
 			timer[3].purge();
-			LB.setBackgroundColor(normalColor);
+			LBback.setBackgroundColor(normalColor);
 			LB.setText("Canceled");
 			running[3] = false;
 		}
@@ -308,7 +308,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[4].cancel();
 			timer[4].purge();
-			DR.setBackgroundColor(normalColor);
+			DRback.setBackgroundColor(normalColor);
 			DR.setText("Canceled");
 			running[4] = false;
 		}
@@ -328,7 +328,7 @@ public class MainActivity extends Activity
 		} else {
 			timer[5].cancel();
 			timer[5].purge();
-			BA.setBackgroundColor(normalColor);
+			BAback.setBackgroundColor(normalColor);
 			BA.setText("Canceled");
 			running[5] = false;
 		}		
