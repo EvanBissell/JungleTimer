@@ -55,7 +55,7 @@ public class MainActivity extends Activity
 	private void TimerMethod0(){
 		runOnUiThread(new Runnable(){
 			public void run(){
-				if(TimeLeft[0] == 0){
+				if(TimeLeft[0] <= 0){
 					GR.setText("Alive");
 					running[0] = false;
 					timer[0].cancel();
@@ -72,7 +72,7 @@ public class MainActivity extends Activity
 	private void TimerMethod1(){
 		runOnUiThread(new Runnable(){
 			public void run(){
-				if(TimeLeft[1] == 0){
+				if(TimeLeft[1] <= 0){
 					LR.setText("Alive");
 					running[1] = false;
 					timer[1].cancel();
@@ -89,7 +89,7 @@ public class MainActivity extends Activity
 	private void TimerMethod2(){
 		runOnUiThread(new Runnable(){
 			public void run(){
-				if(TimeLeft[2] == 0){
+				if(TimeLeft[2] <= 0){
 					GB.setText("Alive");
 					running[2] = false;
 					timer[2].cancel();
@@ -106,7 +106,7 @@ public class MainActivity extends Activity
 	private void TimerMethod3(){
 		runOnUiThread(new Runnable(){
 			public void run(){
-				if(TimeLeft[3] == 0){
+				if(TimeLeft[3] <= 0){
 					LB.setText("Alive");
 					running[3] = false;
 					timer[3].cancel();
@@ -123,7 +123,7 @@ public class MainActivity extends Activity
 	private void TimerMethod4(){
 		runOnUiThread(new Runnable(){
 			public void run(){
-				if(TimeLeft[4] == 0){
+				if(TimeLeft[4] <= 0){
 					DR.setText("Alive");
 					running[4] = false;
 					timer[4].cancel();
@@ -140,7 +140,7 @@ public class MainActivity extends Activity
 	private void TimerMethod5(){
 		runOnUiThread(new Runnable(){
 			public void run(){
-				if(TimeLeft[5] == 0){
+				if(TimeLeft[5] <= 0){
 					BA.setText("Alive");
 					running[5] = false;
 					timer[5].cancel();
